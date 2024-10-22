@@ -4,6 +4,8 @@ use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SobreNosController;
+use App\Http\Controllers\TesteController;
+use App\Http\Controllers\FornecedoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +36,7 @@ Route::prefix('/app')->group(function(){
         return('clientes');
     })->name('app.clientes');
     
-    Route::get('/fornecedores', function(){
-        return('fornecedores');
-    })->name('app.fornecedores');
+    Route::get('/fornecedores', [FornecedoresController::class,'index'])->name('app.fornecedores');
     
     Route::get('/produtos', function(){
         return('produtos');
@@ -51,5 +51,8 @@ Route::get('/rota2', function(){
     return redirect()->route('site.rota1');
 })->name('site.rota2');
 
+Route::fallback(function(){
+    echo 'A rota acessada nao existe. Clique <a href="'.route('site.index').'">AQUI</a> para retornar a Home.';
+});
 
-// Route::redirect('/rota2', '/rota1');
+Route::get('/teste/{p1}/{p2}', [TesteController::class,"teste"])->name('teste');
