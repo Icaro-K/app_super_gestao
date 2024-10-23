@@ -36,7 +36,7 @@ services:
             POSTGRES_USER: ${DB_USERNAME}
             PGDATA: ${PG_DATA}
         volumes:
-            - postgres:/data/postgres
+            - pg-data:/var/lib/postgresql/data
 
         ports:
             - "5440:5432"
