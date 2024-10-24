@@ -23,6 +23,7 @@ Route::get("/", [HomeController::class,"home"])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class,'sobrenos'])->name('site.sobrenos');
 
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+Route::post('/contato', [ContatoController::class, 'save'])->name('site.contato');
 
 Route::get('/login', function(){
     return('login');
